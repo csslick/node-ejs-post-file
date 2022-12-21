@@ -40,6 +40,14 @@ app.post('/create', function(req, res) {
   res.redirect('/'); // 홈으로 이동
 })
 
+// 글삭제 요청 /delete
+app.post('/delete/:id', function(req, res) {
+  const id = req.params.id;
+  console.log(id)
+  // posts 배열의 값을 삭제
+})
+
+
 
 const port = 3001;
 app.listen(port, () => {
