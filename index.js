@@ -42,9 +42,11 @@ app.post('/create', function(req, res) {
 
 // 글삭제 요청 /delete
 app.post('/delete/:id', function(req, res) {
+  // id 글번호 
   const id = req.params.id;
   console.log(id)
-  // posts 배열의 값을 삭제
+  // id값에 해당하는 posts 삭제
+
 })
 
 
