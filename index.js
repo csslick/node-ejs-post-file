@@ -36,7 +36,8 @@ app.post('/create', function(req, res) {
   posts.push(글); // posts 배열에 글 추가
   console.log('posts = ', posts);
   // DB file에 글 저장
-
+  fs.writeFileSync('postDB.json', JSON.stringify(posts))
+  res.redirect('/'); // 홈으로 이동
 })
 
 

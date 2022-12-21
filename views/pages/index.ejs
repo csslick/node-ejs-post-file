@@ -21,7 +21,9 @@
     </form>
     <section>
       <h2>글목록</h2>
-      <%= posts %> 
+      <% for(let post of posts) { %>
+        <li><%= post %> </li>
+      <% } %>
     </section>
   </div><!-- container -->
 
