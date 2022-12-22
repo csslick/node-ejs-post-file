@@ -10,9 +10,9 @@
 <body>
   <nav class="container">
     <a href="/">home</a> |
-    <a href="/about">about</a>
+    <a href="/about">about</a> |
+    <a onclick="isAdmin('<%= id %>', '<%= pwd %>');return false;" href="/admin">admin</a>
   </nav>
-
   <div class="container">
     <h1>게시판</h1>
     <form action="/create" method="post">
@@ -37,5 +37,21 @@
     </section>
   </div><!-- container -->
 
+  <script>
+    function isAdmin(id, pwd) {
+      const checkId = prompt('관리자 아이디');
+      if(checkId === 'admin') {
+        const checkPwd = prompt('비밀번호')
+        if(checkPwd === '1234') {
+          location.href = '/admin'
+        } else {
+          alert('비밀번호가 틀립니다')
+        }
+      } else {
+        alert('아이디가 틀립니다')
+      }
+      console.log(id, pwd)
+    }
+  </script>
 </body>
 </html>

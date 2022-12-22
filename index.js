@@ -22,7 +22,11 @@ app.use(express.urlencoded({extended: true}))
 
 // home
 app.get('/', function(요청, 응답){
-  응답.render('pages/index.ejs', { posts })
+  응답.render('pages/index.ejs', { 
+    posts: posts, 
+    id: 'admin',
+    pwd: '1234'
+  })
 })
 
 // about
@@ -46,9 +50,25 @@ app.post('/delete/:id', function(req, res) {
   const id = req.params.id;
   console.log(id)
   // id값에 해당하는 posts 삭제
-
+  posts.splice(id, 1);
+  console.log(posts)
+  // DB file에 글 저장
+  fs.writeFileSync('postDB.json', JSON.stringify(posts))
+  res.redirect('/'); // 홈으로 이동
 })
 
+
+// admin
+app.get('/admin', function(req, res) {
+  res.render('pages/admin.ejs')
+})
+
+app.get('/download', function(req, res) {
+  const fileName = 'postDB.json';
+  const file = `${__dirname}/${fileName}`;
+  res.download(file); // Set disposition and send it
+
+})
 
 
 const port = 3001;
