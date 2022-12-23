@@ -32,7 +32,7 @@ app.get('/about', function(req, res) {
 
 // 글쓰기 요청 /create
 app.post('/create', function(req, res) {
-  const 글 = req.body.post;
+  const 글 = req.body;
   posts.push(글); // posts 배열에 글 추가
   console.log('posts = ', posts);
   // DB file에 글 저장
@@ -46,7 +46,10 @@ app.post('/delete/:id', function(req, res) {
   const id = req.params.id;
   console.log(id)
   // id값에 해당하는 posts 삭제
-
+  posts.splice(id, 1)
+  // 저장
+  fs.writeFileSync('postDB.json', JSON.stringify(posts))
+  res.redirect('/'); // 홈으로 이동
 })
 
 
