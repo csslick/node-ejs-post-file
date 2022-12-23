@@ -44,9 +44,13 @@
             <b><%= posts[i].name %></b>
             <p><%= posts[i].comment %> </p>
           </div>
-          <form action="/delete/<%= i %>" method="post">
+          <!-- <form action="/delete/<%= i %>" method="post">
             <button type="submit" class="btn btn-danger">삭제</button>
-          </form>
+          </form> -->
+          <button 
+            onclick="isAdmin('<%= posts[i].name %>', '<%= posts[i].pwd %>')" 
+            class="btn btn-danger">삭제
+          </button>
         </li>
       <% } %>
       </ul>
